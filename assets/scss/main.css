@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+h1 {
+  font-size: 28px;
+  font-weight: bold;
+  /* margin-bottom: 20px; */
+  text-align: left;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  text-align: left;
+}
+
+h3 {
+  font-size: 16px;
+  /* font-weight: 600; */
+  margin: 0;
+  text-align: left;
+}
+
+p {
+  font-size: 16px;
+  color: darkgray;
+  margin: 0;
+  text-align: left;
+}
