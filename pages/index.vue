@@ -14,7 +14,7 @@
 
         <div class="section">
             <h1>人气飙升电影</h1>
-            <div class="flex nowrap overflow-x-auto gap-4 pb-2">
+            <div v-if="trendingMovies" class="flex nowrap overflow-x-auto gap-4 pb-2">
                 <MovieCard class="movie-card" v-for="movie in trendingMovies.slice(0, 10)" :title="movie.title"
                     :secdonary-title="movie.release_date" :poster-path="movie.poster_path"
                     @click="clickMovie(movie.id)" />
@@ -24,7 +24,7 @@
 
         <div class="section">
             <h1>人气飙升剧集</h1>
-            <div class="flex nowrap overflow-x-auto gap-4 pb-2">
+            <div v-if="trendingTvs" class="flex nowrap overflow-x-auto gap-4 pb-2">
                 <MovieCard class="movie-card" v-for="movie in trendingTvs.slice(0, 10)" :title="movie.name"
                     :secdonary-title="movie.first_air_date" :poster-path="movie.poster_path"
                     @click="clickTv(movie.id)" />
@@ -33,7 +33,7 @@
 
         <div class="section">
             <h1>热门电影</h1>
-            <div class="flex nowrap overflow-x-auto gap-4 pb-2">
+            <div v-if="popularMovies" class="flex nowrap overflow-x-auto gap-4 pb-2">
                 <MovieCard class="movie-card" v-for="movie in popularMovies.slice(0, 10)" :title="movie.title"
                     :secdonary-title="movie.release_date" :poster-path="movie.poster_path"
                     @click="clickMovie(movie.id)" />
@@ -42,7 +42,7 @@
 
         <div class="section">
             <h1>热门剧集</h1>
-            <div class="flex nowrap overflow-x-auto gap-4 pb-2">
+            <div v-if="popularTvs" class="flex nowrap overflow-x-auto gap-4 pb-2">
                 <MovieCard class="movie-card" v-for="movie in popularTvs.slice(0, 10)" :title="movie.name"
                     :secdonary-title="movie.first_air_date" :poster-path="movie.poster_path"
                     @click="clickTv(movie.id)" />
@@ -54,9 +54,6 @@
 </template>
 
 <script setup>
-
-
-
 const { data: popularMovies } = await useFetch('/api/movie/list', {
     query: {
         path: 'popular'
