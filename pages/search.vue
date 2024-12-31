@@ -108,6 +108,12 @@ function removeDuplicatesById(arr) {
     }, []);
 }
 
+useSeoMeta({
+    title: '搜索-Cinemate',
+    ogTitle: '搜索-Cinemate',
+    description: '输入名称搜索电影和剧集',
+    ogDescription: '输入名称搜索电影和剧集',
+})
 
 </script>
 

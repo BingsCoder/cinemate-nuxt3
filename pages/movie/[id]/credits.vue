@@ -134,7 +134,12 @@ function groupByDepartment(array) {
     }, {}); // Start with an empty object as the accumulator
 }
 
-
+useHead({
+    title: `${data.value.title}演职员表-Cinemate`,
+    meta: [
+        { name: 'description', content: `电影《${data.value.title}》创作人员及全部演职员表。` }
+    ],
+})
 
 </script>
 

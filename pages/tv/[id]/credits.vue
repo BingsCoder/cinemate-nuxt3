@@ -134,6 +134,12 @@ function groupByDepartment(array) {
     }, {}); // Start with an empty object as the accumulator
 }
 
+useSeoMeta({
+    title: () => `${data.value.name}演职员表-Cinemate`,
+    ogTitle: () => `${data.value.name}演职员表-Cinemate`,
+    description: () => `介绍tv剧集《${data.value.name}》所有演职人员。`,
+    ogDescription: () => `介绍tv剧集《${data.value.name}》所有演职人员。`,
+});
 
 
 </script>

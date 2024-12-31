@@ -7,7 +7,7 @@
                     <h1>Cinemate</h1>
                 </div>
             </ULink>
-            <UNavigationMenu arrow :items="items" class="items-center col-span-2">
+            <UNavigationMenu arrow :items="items" class="items-center col-span-2 hover:z-1">
 
             </UNavigationMenu>
         </div>

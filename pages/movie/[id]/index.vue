@@ -141,6 +141,12 @@ onBeforeUnmount(() => {
     window.removeEventListener('resize', throttledCheckScreenSize);
 });
 
+useHead({
+    title: `${data.value.title}详情-Cinemate`,
+    meta: [
+        { name: 'description', content: `电影《${data.value.title}》简介：${data.value.overview || ''}` }
+    ],
+})
 
 </script>
 

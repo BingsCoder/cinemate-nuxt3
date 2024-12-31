@@ -132,6 +132,12 @@ onBeforeUnmount(() => {
     window.removeEventListener('resize', throttleCheckScreenSize);
 });
 
+useSeoMeta({
+    title: () => `${data.value.name}详情介绍-Cinemate`,
+    ogTitle: () => `${data.value.name}详情介绍-Cinemate`,
+    description: () => `介绍tv剧集《${data.value.name}》的基本情况、创作人员以及演职员表。`,
+    ogDescription: () => `介绍tv剧集《${data.value.name}》的基本情况、创作人员以及演职员表。`,
+});
 
 </script>
 

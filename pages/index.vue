@@ -106,6 +106,13 @@ const items = computed(() => {
     return carouselItems
 });
 
+useSeoMeta({
+    title: 'Cinemate - Discover movies and tv shows',
+    ogTitle: 'Cinemate - Discover movies and tv shows',
+    description: 'Discover trending, hot or top-rated movies and tv shows. Data is provided by themoviedb.',
+    ogDescription: 'Discover trending, hot or top-rated movies and tv shows. Data is provided by themoviedb.',
+})
+
 
 </script>
 
