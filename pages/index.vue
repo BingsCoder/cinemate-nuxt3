@@ -88,7 +88,7 @@ const { data: popularTvs } = await useFetch('/api/tv/list', {
     transform: (data) => {
         for (let movie of data.results.slice(0, 2)) {
             const newItem = {
-                name: movie.title,
+                name: movie.name,
                 to: `/movie/${movie.id}`,
                 image: `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path}`,
                 overview: movie.overview
