@@ -77,9 +77,6 @@ const { data: popularTvs } = await useFetch('/api/tv/list', {
 
 const items = computed(() => {
     let carouselItems = []
-    if (!popularMovies.value || !popularTvs.value) {
-        return
-    }
 
     for (let movie of popularMovies.value.slice(0, 2)) {
         const newItem = {
