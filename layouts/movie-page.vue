@@ -80,6 +80,3 @@ const clickMovie = (id) => {
 }
 
 </script>
-
-
-<style scoped></style>

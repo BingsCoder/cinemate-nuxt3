@@ -77,7 +77,7 @@ await useFetch('/api/search', {
 
         tvs.value = removeDuplicatesById(tvs.value.concat(data.tv))
 
-        maxPage.value = data.total_pages
+        maxPage.value = data.total
     },
     watch: [q, page]
 })
@@ -89,6 +89,7 @@ const handleRefresh = async () => {
 }
 
 const hasMoreData = computed(() => {
+    console.log('has more data:', maxPage.value, page.value)
     if (!maxPage.value) {
         return true
     } else {

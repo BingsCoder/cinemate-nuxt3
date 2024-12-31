@@ -43,6 +43,6 @@ export default defineEventHandler(async (event) => {
   return {
     movie: trimmedResults.movie,
     tv: trimmedResults.tv,
-    total: response.total_results,
+    total: response.total_pages,
   };
 });

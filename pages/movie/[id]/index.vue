@@ -147,7 +147,6 @@ useHead({
         { name: 'description', content: `电影《${data.value.title}》简介：${data.value.overview || ''}` }
     ],
 })
-
 </script>
 
 <style scoped>

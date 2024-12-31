@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="custom-header flex justify-between items-center grid grid-cols-1 md:grid-cols-3 center">
-            <ULink to="/">
+            <ULink to="/" :active="false">
                 <div class="logo col-span-1">
                     <img src="~/assets/images/logo.png" alt="logo" />
                     <h1>Cinemate</h1>
