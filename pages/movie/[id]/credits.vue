@@ -50,24 +50,16 @@ const { id } = useRoute().params
 
 const nuxtApp = useNuxtApp()
 
-// const crew = useState('crew', () => { })
 
-
-const { data, refresh } = await useFetch(`/movie/${id}`, {
-    method: 'get',
-    baseURL: runtimeConfig.public.tmdbBaseUrl,
-    headers: {
-        'accept': 'application/json',
-        'Authorization': 'Bearer ' + runtimeConfig.public.tmdbAccessToken,
-    },
+const { data, error, refresh } = await useFetch(`/api/movie/id`, {
     query: {
-        'language': 'zh-CN',
-        'append_to_response': 'credits'
+        'id': id,
     },
     getCachedData: key => {
         return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
     },
 })
+
 
 const cast = computed(() => {
     if (data.value) {

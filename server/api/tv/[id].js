@@ -1,19 +1,17 @@
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig(event);
-  const { path, page = 1 } = getQuery(event);
-
-  const data = await $fetch(`/tv/${path}`, {
+  const id = getRouterParam(event, "id");
+  const data = await $fetch(`/tv/${id}`, {
     method: "get",
     baseURL: config.public.tmdbBaseUrl,
     headers: {
       accept: "application/json",
-      Authorization: `Bearer ${config.public.tmdbAccessToken}`,
+      Authorization: "Bearer " + config.public.tmdbAccessToken,
     },
     query: {
       language: "zh-CN",
-      page: page,
+      append_to_response: "credits",
     },
   });
-
   return data;
 });

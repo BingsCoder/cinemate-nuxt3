@@ -70,17 +70,7 @@ const { id } = useRoute().params
 const runtimeConfig = useRuntimeConfig()
 const nuxtApp = useNuxtApp()
 
-const { data, error, refresh } = await useFetch(`/tv/${id}`, {
-    method: 'get',
-    baseURL: runtimeConfig.public.tmdbBaseUrl,
-    headers: {
-        'accept': 'application/json',
-        'Authorization': 'Bearer ' + runtimeConfig.public.tmdbAccessToken,
-    },
-    query: {
-        'language': 'zh-CN',
-        'append_to_response': 'credits'
-    },
+const { data, error, refresh } = await useFetch(`/api/tv/${id}`, {
     getCachedData: key => {
         return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
     },

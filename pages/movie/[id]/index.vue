@@ -75,21 +75,18 @@ const { id } = useRoute().params
 const runtimeConfig = useRuntimeConfig()
 const nuxtApp = useNuxtApp()
 
-const { data, error, refresh } = await useFetch(`/movie/${id}`, {
-    method: 'get',
-    baseURL: runtimeConfig.public.tmdbBaseUrl,
-    headers: {
-        'accept': 'application/json',
-        'Authorization': 'Bearer ' + runtimeConfig.public.tmdbAccessToken,
-    },
+const { data, error, refresh } = await useFetch(`/api/movie/id`, {
     query: {
-        'language': 'zh-CN',
-        'append_to_response': 'credits'
+        'id': id,
     },
     getCachedData: key => {
         return nuxtApp.payload.data[key] || nuxtApp.static.data[key]
     },
 })
+
+if (error.value) {
+    throw createError('请求失败')
+}
 
 const posterUrl = 'https://image.tmdb.org/t/p/w440_and_h660_face' + data.value.poster_path
 const year = new Date(data.value.release_date).getFullYear()
@@ -146,7 +143,8 @@ useHead({
     meta: [
         { name: 'description', content: `电影《${data.value.title}》简介：${data.value.overview || ''}` }
     ],
-})
+});
+
 </script>
 
 <style scoped>
