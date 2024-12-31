@@ -12,7 +12,7 @@
 
         </UCarousel>
 
-        <div class="section">
+        <div class="section" v-if="trendingMovies.value">
             <h1>人气飙升电影</h1>
             <div class="flex nowrap overflow-x-auto gap-4 pb-2">
                 <MovieCard class="movie-card" v-for="movie in trendingMovies.slice(0, 10)" :title="movie.title"
@@ -22,7 +22,7 @@
         </div>
 
 
-        <div class="section">
+        <div class="section" v-if="trendingTvs.value">
             <h1>人气飙升剧集</h1>
             <div class="flex nowrap overflow-x-auto gap-4 pb-2">
                 <MovieCard class="movie-card" v-for="movie in trendingTvs.slice(0, 10)" :title="movie.name"
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" v-if="popularMovies.value">
             <h1>热门电影</h1>
             <div class="flex nowrap overflow-x-auto gap-4 pb-2">
                 <MovieCard class="movie-card" v-for="movie in popularMovies.slice(0, 10)" :title="movie.title"
@@ -39,8 +39,7 @@
                     @click="clickMovie(movie.id)" />
             </div>
         </div>
-
-        <div class="section">
+        <div class="section" v-if="popularTvs.value">
             <h1>热门剧集</h1>
             <div class="flex nowrap overflow-x-auto gap-4 pb-2">
                 <MovieCard class="movie-card" v-for="movie in popularTvs.slice(0, 10)" :title="movie.name"
