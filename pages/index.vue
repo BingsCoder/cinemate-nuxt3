@@ -1,7 +1,7 @@
 <template>
     <div>
-        <UCarousel v-slot="{ item }" dots arrows loop :autoplay="{ delay: 3000 }" :items="items" class="w-full mx-auto"
-            :ui="{ item: 'basis-1/1' }">
+        <UCarousel v-if="popularMovies && popularTvs" v-slot="{ item }" dots arrows loop :autoplay="{ delay: 3000 }"
+            :items="items" class="w-full mx-auto" :ui="{ item: 'basis-1/1' }">
             <div class="image-container" @click="navigateTo(item.to)">
                 <img :src="item.image" class="rounded-lg">
                 <div class="caption">
