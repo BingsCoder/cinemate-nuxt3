@@ -53,11 +53,24 @@
 </template>
 
 <script setup>
+const items = useState('carousel-items', () => [])
+
 const { data: popularMovies } = await useFetch('/api/movie/list', {
     query: {
         path: 'popular'
     },
-    transform: (data) => data.results
+    transform: (data) => {
+        for (let movie of data.results.slice(0, 2)) {
+            const newItem = {
+                name: movie.title,
+                to: `/movie/${movie.id}`,
+                image: `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path}`,
+                overview: movie.overview
+            }
+            items.value.push(newItem)
+        }
+        return data.results
+    }
 })
 
 const { data: trendingMovies } = await useFetch('/api/movie/trending', {
@@ -72,35 +85,19 @@ const { data: popularTvs } = await useFetch('/api/tv/list', {
     query: {
         path: 'popular'
     },
-    transform: (data) => data.results
+    transform: (data) => {
+        for (let movie of data.results.slice(0, 2)) {
+            const newItem = {
+                name: movie.title,
+                to: `/movie/${movie.id}`,
+                image: `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path}`,
+                overview: movie.overview
+            }
+            items.value.push(newItem)
+        }
+        return data.results
+    }
 })
-
-const items = computed(() => {
-    let carouselItems = []
-
-    for (let movie of popularMovies.value.slice(0, 2)) {
-        const newItem = {
-            name: movie.title,
-            to: `/movie/${movie.id}`,
-            image: `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path}`,
-            overview: movie.overview
-        }
-        carouselItems.push(newItem)
-    }
-
-    for (let tv of popularTvs.value.slice(0, 2)) {
-        const newItem = {
-            name: tv.name,
-            to: `/tv/${tv.id}`,
-            image: `https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${tv.poster_path}`,
-            overview: tv.overview
-
-        }
-        carouselItems.push(newItem)
-    }
-
-    return carouselItems
-});
 
 useSeoMeta({
     title: 'Cinemate - Discover movies and tv shows',
